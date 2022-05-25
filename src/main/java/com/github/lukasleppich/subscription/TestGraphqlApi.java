@@ -40,4 +40,9 @@ public class TestGraphqlApi {
         return Multi.createFrom().converter(MultiRx3Converters.fromObservable(),
                 service.subject.map(list -> list.toArray(String[]::new)));
     }
+
+    @Subscription("scalarSubscription")
+    public Multi<Payload> scalarSubscription() {
+        return service.createSubscription();
+    }
 }
